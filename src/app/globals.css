@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-surface-secondary: #F1F5F9;
+  --color-primary: #7C3AED;
+  --color-primary-hover: #6D28D9;
+  --color-accent-light: #DDD6FE;
+  --color-text: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-border: #E2E8F0;
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-error: #DC2626;
+  --color-disabled: #94A3B8;
+  --color-focus-ring: rgba(124, 58, 237, 0.25);
+  --radius-card: 14px;
+  --radius-control: 10px;
+}
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-sidebar: var(--color-surface);
+  --color-card: var(--color-surface);
+  --color-accent: var(--color-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-text);
+}
+
+[class*="bg-[var(--color-primary)]/"],
+[class*="bg-indigo-950/"],
+[class*="bg-indigo-500/"],
+[class*="bg-indigo-600/"] {
+  background-color: color-mix(in srgb, var(--color-accent-light) 55%, transparent) !important;
+}
+
+[class~="bg-[var(--color-primary)]"],
+[class~="bg-indigo-600"],
+[class~="bg-indigo-500"] {
+  background-color: var(--color-primary) !important;
+}
+
+[class*="hover:bg-[var(--color-primary)]"]:hover,
+[class*="hover:bg-indigo-600"]:hover,
+[class*="hover:bg-indigo-500"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+[class*="border-indigo-500"],
+[class*="border-indigo-600"] {
+  border-color: var(--color-primary) !important;
+}
+
+[class*="text-indigo-200"],
+[class*="text-indigo-300"],
+[class*="text-indigo-400"],
+[class*="text-indigo-500"],
+[class*="text-indigo-600"] {
+  color: var(--color-primary) !important;
+}
+
+[class~="text-white"],
+[class*="text-white/"] {
+  color: var(--color-text) !important;
+}
+
+[class*="hover:text-white"]:hover {
+  color: var(--color-text) !important;
+}
+
+[class~="bg-[var(--color-primary)]"][class*="text-white"],
+[class~="bg-indigo-600"][class*="text-white"],
+[class~="bg-indigo-500"][class*="text-white"] {
+  color: var(--color-surface) !important;
+}
+
+[class*="text-slate-100"],
+[class*="text-slate-200"],
+[class*="text-slate-300"] {
+  color: var(--color-text) !important;
+}
+
+[class*="text-zinc-300"],
+[class*="text-zinc-400"],
+[class*="text-zinc-500"],
+[class*="text-zinc-600"] {
+  color: var(--color-text-secondary) !important;
+}
+
+[class*="text-emerald-200"],
+[class*="text-emerald-300"],
+[class*="text-emerald-400"] {
+  color: var(--color-success) !important;
+}
+
+[class*="text-amber-200"],
+[class*="text-amber-300"],
+[class*="text-amber-400"] {
+  color: var(--color-warning) !important;
+}
+
+[class*="text-rose-200"],
+[class*="text-rose-300"],
+[class*="text-rose-400"] {
+  color: var(--color-error) !important;
+}
+
+[class*="text-sky-200"],
+[class*="text-sky-300"],
+[class*="text-sky-400"] {
+  color: var(--color-text-secondary) !important;
+}
+
+[class*="shadow-black/40"] {
+  box-shadow: 0 4px 14px rgb(15 23 42 / 0.06) !important;
+}
+
+[class*="rounded-2xl"] {
+  border-radius: var(--radius-card) !important;
+}
+
+button[class*="rounded-lg"],
+a[class*="rounded-lg"] {
+  border-radius: var(--radius-control) !important;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  background-color: var(--color-surface) !important;
+  border-radius: var(--radius-control);
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  border-color: var(--color-primary) !important;
+  outline: 3px solid var(--color-focus-ring) !important;
+  outline-offset: 1px;
+}
+
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  color: var(--color-disabled) !important;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-primary) !important;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
