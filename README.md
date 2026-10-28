@@ -21,26 +21,31 @@ StudySync is an AI-powered study assistant designed to transform your notes, str
 ## Project Structure
 
 ```
-├── src/
-│   ├── app/
-│   │   ├── favicon.ico
-│   │   ├── globals.css      # Dark theme styling with indigo accents
-│   │   ├── layout.tsx       # Root layout with Geist fonts
-│   │   └── page.tsx         # StudySync landing page
-│   ├── components/
-│   │   ├── Footer.tsx       # Minimalist dark footer
-│   │   ├── Hero.tsx         # Landing hero with tagline & CTA placeholder
-│   │   ├── Navbar.tsx       # Navigation bar
-│   │   └── index.ts         # Component exports
-│   ├── lib/
-│   │   └── constants.ts     # Core app constants & metadata
-│   └── types/
-│       └── index.ts         # Global TypeScript interfaces
-├── public/
-├── eslint.config.mjs
-├── next.config.ts
-├── package.json
-└── tsconfig.json
+src/
+  app/
+    analytics/page.tsx
+    flashcards/page.tsx
+    notes/page.tsx
+    quiz/page.tsx
+    revision/page.tsx
+    settings/page.tsx
+    study-kits/page.tsx
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    dashboard/
+    layout/
+    Footer.tsx
+    Hero.tsx
+    Navbar.tsx
+  lib/constants.ts
+  types/index.ts
+public/
+eslint.config.mjs
+next.config.ts
+package.json
+tsconfig.json
 ```
 
 ---
