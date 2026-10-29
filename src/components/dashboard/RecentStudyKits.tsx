@@ -4,7 +4,7 @@ import { FolderPlus, BookOpen } from "lucide-react";
 
 export function RecentStudyKits() {
   return (
-    <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+    <div className="dashboard-panel border border-[var(--color-border)] p-5 sm:p-6">
       <div className="flex items-center justify-between pb-4 border-b border-[var(--color-border)]">
         <div className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-secondary)] text-[var(--color-primary)]">

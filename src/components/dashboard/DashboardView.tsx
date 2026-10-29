@@ -7,7 +7,7 @@ import { UpcomingRevision } from "./UpcomingRevision";
 
 export function DashboardView() {
   return (
-    <div className="space-y-8 pb-12">
+    <div className="dashboard-view space-y-8 pb-12">
       {/* 1. Welcome Section */}
       <WelcomeSection />
 

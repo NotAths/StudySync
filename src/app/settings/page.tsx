@@ -23,7 +23,7 @@ export default function SettingsPage() {
 
   return (
     <AppLayout title="Settings">
-      <div className={`pb-12 ${compact ? "space-y-5" : "space-y-8"}`}>
+      <div className={`app-page pb-12 ${compact ? "space-y-5" : "space-y-8"}`}>
         <section>
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-medium text-indigo-300">
             <Settings2 className="h-3.5 w-3.5 text-[var(--color-primary)]" />

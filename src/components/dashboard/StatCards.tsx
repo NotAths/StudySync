@@ -35,19 +35,19 @@ const INITIAL_METRICS: StatMetric[] = [
 
 export function StatCards() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
       {INITIAL_METRICS.map((metric) => {
         const Icon = metric.icon;
         return (
           <div
             key={metric.id}
-            className="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition-all duration-200 hover:border-[var(--color-primary)]/40 hover:shadow-lg hover:shadow-[var(--color-primary)]/5"
+            className="dashboard-stat-card group relative border border-[var(--color-border)] bg-[var(--color-surface)] p-4 sm:p-5 hover:border-[var(--color-primary)]/40"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-medium text-zinc-400">
                 {metric.title}
               </span>
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-secondary)] text-[var(--color-primary)] transition-colors group-hover:border-[var(--color-primary)]/30">
+              <div className="dashboard-stat-icon flex h-8 w-8 items-center justify-center rounded-lg border transition-colors">
                 <Icon className="h-4 w-4" />
               </div>
             </div>

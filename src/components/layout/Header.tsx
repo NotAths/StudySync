@@ -17,7 +17,7 @@ export function Header({
   title = "Dashboard",
 }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-20 flex h-16 w-full items-center justify-between border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 px-4 backdrop-blur-md sm:px-6 lg:px-8">
+    <header className="app-topbar sticky top-0 z-20 flex w-full items-center justify-between border-b border-[var(--color-border)] px-4 backdrop-blur-md sm:px-6 lg:px-8">
       {/* Left side: Mobile Toggle & Page Title */}
       <div className="flex items-center gap-3">
         <button
@@ -32,7 +32,10 @@ export function Header({
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
 
-        <div>
+        <div className="min-w-0">
+          <p className="hidden text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-secondary)] sm:block">
+            StudySync / Workspace
+          </p>
           <h1 className="text-lg font-bold tracking-tight text-white sm:text-xl">
             {title}
           </h1>
@@ -42,7 +45,7 @@ export function Header({
       {/* Center / Right side: Search, Notifications, Avatar */}
       <div className="flex items-center gap-3 sm:gap-4">
         {/* Search input */}
-        <div className="relative hidden sm:block w-64 md:w-72 lg:w-80">
+        <div className="relative hidden w-64 lg:block lg:w-72 xl:w-80">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />
           <input
             type="text"
@@ -59,7 +62,7 @@ export function Header({
           type="button"
           disabled
           title="Search will be available when study data is connected"
-          className="flex h-9 w-9 cursor-not-allowed items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-zinc-500 disabled:opacity-70 sm:hidden"
+          className="flex h-9 w-9 cursor-not-allowed items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-zinc-500 disabled:opacity-70 lg:hidden"
           aria-label="Search (not available yet)"
         >
           <Search className="h-4 w-4" />

@@ -4,13 +4,7 @@ import { Plus, Sparkles, UploadCloud, BookOpen, BrainCircuit } from "lucide-reac
 
 export function CreateKitCard() {
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-[var(--color-primary)]/30 bg-gradient-to-br from-[var(--color-surface)] via-[var(--color-surface)] to-[var(--color-surface-secondary)] p-6 sm:p-8 shadow-xl shadow-black/40">
-      {/* Subtle background glow */}
-      <div
-        className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[var(--color-primary)]/10 blur-3xl"
-        aria-hidden="true"
-      />
-
+    <div className="dashboard-create-kit relative overflow-hidden border border-[var(--color-primary)]/20 p-5 sm:p-8">
       <div className="relative flex flex-col items-start justify-between gap-6 lg:flex-row lg:items-center">
         <div className="max-w-2xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/40 bg-[var(--color-primary)]/15 px-3 py-1 text-xs font-semibold text-indigo-300">

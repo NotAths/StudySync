@@ -21,7 +21,7 @@ import type { NavItem } from "@/types";
 const NAV_ITEMS: NavItem[] = [
   {
     label: "Dashboard",
-    href: "/",
+    href: "/dashboard",
     icon: LayoutDashboard,
   },
   {
@@ -112,16 +112,16 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
   }, [mobileOpen, onMobileClose]);
 
   const content = (
-    <div className="flex h-full flex-col justify-between bg-[var(--color-surface-secondary)] border-r border-[var(--color-border)] text-slate-300">
+    <div className="app-sidebar-panel flex h-full flex-col justify-between border-r text-slate-300">
       {/* Brand Header */}
       <div>
-        <div className="flex h-16 items-center justify-between px-6 border-b border-[var(--color-border)]/80">
+        <div className="app-sidebar-header flex h-20 items-center justify-between px-6 border-b">
           <Link
-            href="/"
+            href="/dashboard"
             onClick={onMobileClose}
             className="flex items-center gap-2.5 group"
           >
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--color-primary)]/15 border border-[var(--color-primary)]/30 text-[var(--color-primary)] shadow-sm shadow-[var(--color-primary)]/10 transition-colors group-hover:bg-[var(--color-primary)]/25">
+            <div className="app-brand-mark flex h-10 w-10 items-center justify-center rounded-xl border transition-transform group-hover:-rotate-6">
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
@@ -192,7 +192,7 @@ export function Sidebar({ mobileOpen = false, onMobileClose }: SidebarProps) {
 
       {/* Sidebar Footer / Study Mode Indicator */}
       <div className="p-4 border-t border-[var(--color-border)]/80">
-        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3.5">
+        <div className="app-workspace-card rounded-lg border p-3.5">
           <div className="flex items-center gap-2">
             <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span className="text-xs font-semibold text-slate-200">Study Workspace</span>

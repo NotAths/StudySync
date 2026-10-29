@@ -33,7 +33,7 @@ export default function StudyKitsPage() {
 
   return (
     <AppLayout title="Saved Study Kits">
-      <div className="space-y-8 pb-12">
+      <div className="app-page space-y-8 pb-12">
         <section className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-medium text-indigo-300">

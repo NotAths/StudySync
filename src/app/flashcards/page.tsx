@@ -18,7 +18,7 @@ export default function FlashcardsPage() {
 
   return (
     <AppLayout title="Flashcards">
-      <div className="space-y-8 pb-12">
+      <div className="app-page space-y-8 pb-12">
         <section>
           <div className="inline-flex items-center gap-2 rounded-full border border-[var(--color-primary)]/30 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-medium text-indigo-300">
             <Layers className="h-3.5 w-3.5 text-[var(--color-primary)]" />

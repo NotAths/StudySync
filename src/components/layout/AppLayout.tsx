@@ -24,7 +24,7 @@ export function AppLayout({ children, title = "Dashboard" }: AppLayoutProps) {
   }, [mobileSidebarOpen]);
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-[var(--color-bg)] text-slate-100 flex flex-col md:flex-row">
+    <div className="app-shell min-h-screen overflow-x-clip bg-[var(--color-bg)] text-slate-100 flex flex-col md:flex-row">
       {/* Sidebar (fixed on desktop, slide-over drawer on mobile) */}
       <Sidebar
         mobileOpen={mobileSidebarOpen}
@@ -32,15 +32,17 @@ export function AppLayout({ children, title = "Dashboard" }: AppLayoutProps) {
       />
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col md:pl-64 min-w-0">
+      <div className="flex min-w-0 flex-1 flex-col md:pl-64">
         <Header
           title={title}
           mobileMenuOpen={mobileSidebarOpen}
           mobileMenuButtonRef={menuButtonRef}
           onMobileMenuToggle={() => setMobileSidebarOpen((open) => !open)}
         />
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8 max-w-7xl w-full mx-auto">
-          {children}
+        <main className="app-main flex-1 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
+          <div className="app-content mx-auto w-full">
+            {children}
+          </div>
         </main>
       </div>
     </div>
