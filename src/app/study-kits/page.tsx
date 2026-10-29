@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -11,6 +11,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import { AppLayout } from "@/components/layout/AppLayout";
+import {
+  getServerStudyKitsSnapshot,
+  getStudyKitsSnapshot,
+  subscribeToStudyKits,
+} from "@/lib/study-kits";
 
 const CATEGORIES = ["All", "Notes", "Flashcards", "Quizzes"] as const;
 type Category = (typeof CATEGORIES)[number];
@@ -18,18 +23,27 @@ type Category = (typeof CATEGORIES)[number];
 export default function StudyKitsPage() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<Category>("All");
+  const { kits, error: storageError } = useSyncExternalStore(
+    subscribeToStudyKits,
+    getStudyKitsSnapshot,
+    getServerStudyKitsSnapshot,
+  );
 
   const visibleKits = useMemo(
     () =>
-      [] as { title: string; description: string; category: Category }[],
-    [],
-  ).filter((kit) => {
-    const matchesSearch = `${kit.title} ${kit.description}`
-      .toLowerCase()
-      .includes(search.toLowerCase());
-    const matchesCategory = category === "All" || kit.category === category;
-    return matchesSearch && matchesCategory;
-  });
+      kits.filter((kit) => {
+        const matchesSearch = `${kit.title} ${kit.subject} ${kit.summary}`
+          .toLowerCase()
+          .includes(search.toLowerCase());
+        const matchesCategory =
+          category === "All" ||
+          category === "Notes" ||
+          (category === "Flashcards" && kit.flashcards.length > 0) ||
+          (category === "Quizzes" && kit.quizQuestions.length > 0);
+        return matchesSearch && matchesCategory;
+      }),
+    [category, kits, search],
+  );
 
   return (
     <AppLayout title="Saved Study Kits">
@@ -99,18 +113,35 @@ export default function StudyKitsPage() {
           </div>
         </section>
 
-        {visibleKits.length > 0 ? (
+        {storageError ? (
+          <section
+            role="alert"
+            className="rounded-xl border border-rose-400/20 bg-rose-400/5 p-4 text-sm text-rose-200"
+          >
+            {storageError}
+          </section>
+        ) : visibleKits.length > 0 ? (
           <section
             aria-label="Study kits"
             className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3"
           >
             {visibleKits.map((kit) => (
               <article
-                key={kit.title}
+                key={kit.id}
                 className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5"
               >
-                <h3 className="font-semibold text-white">{kit.title}</h3>
-                <p className="mt-2 text-sm text-zinc-400">{kit.description}</p>
+                <p className="text-xs font-medium uppercase tracking-wide text-indigo-300">
+                  {kit.subject}
+                </p>
+                <h3 className="mt-1 font-semibold text-white">{kit.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                  {kit.summary}
+                </p>
+                <p className="mt-4 text-xs text-zinc-500">
+                  {kit.flashcards.length} flashcards ·{" "}
+                  {kit.quizQuestions.length} quiz questions ·{" "}
+                  {new Date(kit.createdAt).toLocaleDateString()}
+                </p>
               </article>
             ))}
           </section>

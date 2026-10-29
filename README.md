@@ -60,6 +60,31 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to view the application.
 
+### Generate a study kit from notes or a PDF
+
+Study-kit generation uses the Gemini API. Create a `.env.local` file in the
+project root (the same folder as `package.json`) and add your Gemini API key:
+
+```env
+GEMINI_API_KEY=your-gemini-api-key
+```
+
+Create a Gemini API key in [Google AI Studio](https://aistudio.google.com/apikey).
+If you currently have an `api.env.local` file, Next.js will not load it
+automatically: rename it to `.env.local` and change the variable name to
+`GEMINI_API_KEY`. Use a Gemini API key as the value, not an OpenAI key.
+
+Restart the development server after adding the key. Notes and PDF files are
+sent to Gemini for processing; generated study kits are saved in the current
+browser only.
+
+The AI Quiz page uses the same `GEMINI_API_KEY` to generate quizzes from saved
+study kits or topics. Saved kits are read from the current browser.
+
+The Revision Plan page lets you set an exam date, choose saved study kits, and
+build three review sessions per kit: key ideas, flashcards, and quiz practice.
+Generated schedules and completion progress are saved in the current browser.
+
 ### Available Scripts
 
 - `npm run dev`: Starts the Next.js development server
