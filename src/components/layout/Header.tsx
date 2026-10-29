@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Search, Bell, Menu, User, X } from "lucide-react";
+import Link from "next/link";
+import { ArrowLeft, Search, Bell, Menu, User, X } from "lucide-react";
 
 interface HeaderProps {
   onMobileMenuToggle?: () => void;
@@ -31,6 +32,18 @@ export function Header({
         >
           {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
+
+        {title === "Dashboard" && (
+          <Link
+            href="/"
+            aria-label="Back to StudySync landing page"
+            title="Back to landing page"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-primary)] transition hover:border-[var(--color-primary)]/50 hover:bg-[var(--color-accent-light)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
+          >
+            <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+          </Link>
+
+        )}
 
         <div className="min-w-0">
           <p className="hidden text-[9px] font-semibold uppercase tracking-[0.16em] text-[var(--color-text-secondary)] sm:block">

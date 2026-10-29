@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type PointerEvent } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -9,8 +9,10 @@ import {
   BookOpen,
   BrainCircuit,
   CalendarDays,
+  Check,
   ChevronLeft,
   ChevronRight,
+  Clock3,
   Layers,
   Menu,
   NotebookPen,
@@ -122,43 +124,72 @@ function LandingNavbar() {
 }
 
 function LandingHero() {
-  function updatePointer(event: PointerEvent<HTMLElement>) {
-    if (event.pointerType !== "mouse") return;
-
-    const bounds = event.currentTarget.getBoundingClientRect();
-    event.currentTarget.style.setProperty("--pointer-x", `${event.clientX - bounds.left}px`);
-    event.currentTarget.style.setProperty("--pointer-y", `${event.clientY - bounds.top}px`);
-  }
-
   return (
-    <section aria-labelledby="landing-title" className="landing-hero" onPointerMove={updatePointer}>
-      <div aria-hidden="true" className="landing-hero-photo" />
+    <section aria-labelledby="landing-title" className="landing-hero">
+      <div aria-hidden="true" className="landing-hero-orb landing-hero-orb-one" />
+      <div aria-hidden="true" className="landing-hero-orb landing-hero-orb-two" />
       <div aria-hidden="true" className="landing-hero-grid" />
       <div className="landing-hero-content">
         <p className="landing-eyebrow">
           <Sparkles aria-hidden="true" />
-          <span>A focused study workspace</span>
+          <span>Your all-in-one study workspace</span>
         </p>
-        <h1 id="landing-title">{APP_CONFIG.name}<span className="landing-title-dot">.</span></h1>
-        <p className="landing-tagline">Your notes. Your learning. In sync.</p>
+        <h1 id="landing-title">Make study time<br /><em>count.</em></h1>
+        <p className="landing-tagline">{APP_CONFIG.name}, in sync with you.</p>
         <p className="landing-intro">
-          Bring your study material together, find your focus, and make the
-          next session count.
+          Turn your notes into study kits, practice with AI quizzes and
+          flashcards, and keep your next exam plan in view.
         </p>
         <div className="landing-hero-actions">
           <Link className="landing-primary-link" href="/dashboard">
-            Open your workspace
+            Start studying
             <ArrowRight aria-hidden="true" />
           </Link>
-          <a className="landing-secondary-link" href="#features">Explore StudySync</a>
+          <a className="landing-secondary-link" href="#features">See what you can do</a>
+        </div>
+        <div className="landing-hero-proof" aria-label="StudySync features">
+          <span><Check aria-hidden="true" />Study kits</span>
+          <span><Check aria-hidden="true" />Active recall</span>
+          <span><Check aria-hidden="true" />Exam planning</span>
         </div>
       </div>
+      <div className="landing-hero-preview" aria-label="Preview of the StudySync workspace">
+        <div className="landing-preview-window">
+          <div className="landing-preview-bar">
+            <span className="landing-preview-brand"><span><Sparkles aria-hidden="true" /></span>StudySync</span>
+            <span className="landing-preview-avatar">S</span>
+          </div>
+          <div className="landing-preview-body">
+            <p className="landing-preview-overline">YOUR STUDY SPACE</p>
+            <h2>Ready for a focused session?</h2>
+            <p className="landing-preview-subtitle">Everything you need, right where you left it.</p>
+            <div className="landing-preview-stats">
+              <div><span>Study kits</span><strong><BookOpen aria-hidden="true" />Notes & ideas</strong></div>
+              <div><span>Practice</span><strong><BrainCircuit aria-hidden="true" />Quiz yourself</strong></div>
+            </div>
+            <div className="landing-preview-plan">
+              <div className="landing-preview-plan-heading">
+                <span><CalendarDays aria-hidden="true" />Next up</span>
+                <span>YOUR PLAN</span>
+              </div>
+              <div className="landing-preview-task">
+                <span className="landing-preview-task-icon"><Layers aria-hidden="true" /></span>
+                <span><strong>Review your flashcards</strong><small><Clock3 aria-hidden="true" />A quick recall session</small></span>
+                <ArrowUpRight aria-hidden="true" />
+              </div>
+              <div className="landing-preview-progress"><span /></div>
+              <p className="landing-preview-progress-label">Small steps. Steady progress.</p>
+            </div>
+          </div>
+        </div>
+        <div className="landing-preview-float landing-preview-float-top"><span><Sparkles aria-hidden="true" /></span>Notes to study kit</div>
+        <div className="landing-preview-float landing-preview-float-bottom"><span>✓</span>One focused session at a time</div>
+      </div>
       <div className="landing-hero-caption">
-        <span>Make room for deep work</span>
+        <span>Less setup. More learning.</span>
         <span aria-hidden="true" className="landing-caption-rule" />
         <a href="#features">Scroll to explore <ArrowDown aria-hidden="true" /></a>
       </div>
-      <span aria-hidden="true" className="landing-hero-index">01 / 04</span>
     </section>
   );
 }
